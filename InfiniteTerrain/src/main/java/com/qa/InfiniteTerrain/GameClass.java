@@ -1,5 +1,7 @@
 package com.qa.InfiniteTerrain;
 
+import java.util.Scanner;
+
 public class GameClass {
 
 	int northDist;
@@ -16,11 +18,21 @@ public class GameClass {
 		this.westDist = WD;
 		this.gamePlayer = player;
 		this.winCondition = Win;
+
+	}
+
+	public void intro(Player gamePlayer, Scanner sc) {
+		System.out.println(
+				"Welcome to my Swamp \n" + "You are up to your knees in swamp water and fog is all around you \n"
+						+ "input your name to continue");
+		gamePlayer.name = sc.nextLine();
+		System.out.println("Welcome " + gamePlayer.name + "\n Try North, East, South or West");
+
 	}
 
 	public String move(String dir) {
 
-		if (checkPOS(this.gamePlayer, this.winCondition) == false) {
+		if (!(checkPOS(this.gamePlayer, this.winCondition))) {
 			switch (dir) {
 			case "North":
 			case "north":
@@ -52,7 +64,7 @@ public class GameClass {
 					this.gamePlayer.xPOS -= 10;
 					return "You moved 10 meters west";
 				} else {
-					return "There is a fog wall ahead to dangerous to enter";
+					return "There is a fog wall ahead too dangerous to enter";
 				}
 
 			case "East":
@@ -63,7 +75,7 @@ public class GameClass {
 					this.gamePlayer.xPOS += 10;
 					return "You moved 10 meters east";
 				} else {
-					return "There is a fog wall ahead to dangerous to enter";
+					return "There is a fog wall ahead too dangerous to enter";
 				}
 			}
 
@@ -76,9 +88,9 @@ public class GameClass {
 
 
 
-	private static boolean checkPOS(Player gamePlayer, Treasure winCondition) {
-		if (((gamePlayer.xPOS > winCondition.xPOS - 20 || gamePlayer.xPOS < winCondition.xPOS + 20)
-				&& (gamePlayer.yPOS > winCondition.yPOS - 20 || gamePlayer.yPOS < winCondition.yPOS + 20))) {
+	public boolean checkPOS(Player gamePlayer, Treasure winCondition) {
+		if (((gamePlayer.xPOS >= winCondition.xPOS - 20 && gamePlayer.xPOS <= winCondition.xPOS + 20)
+				&& (gamePlayer.yPOS >= winCondition.yPOS - 20 && gamePlayer.yPOS <= winCondition.yPOS + 20))) {
 			return true;
 		} else {
 			return false;

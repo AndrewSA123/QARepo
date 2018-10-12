@@ -8,11 +8,19 @@ public class MoveTest {
 
 	@Test
 	public void MoveTesting() {
-		Player player = new Player("Andrew", 100);
-		Treasure Win = new Treasure(50, 60);
-		GameClass a = new GameClass(100, 100, 100, 100, player, Win);
+		Player player = new Player("Andrew", 10);
+		Treasure Win = new Treasure(0, 100);
+		GameClass a = new GameClass(200, -100, 100, -100, player, Win);
 
-		assertEquals("You moved 10 meters south", a.move("south"));
+
+
+
+		System.out.println(player.xPOS);
+		System.out.println(player.yPOS);
+		System.out.println(Win.xPOS);
+		System.out.println(Win.yPOS);
+		System.out.println(a.checkPOS(player, Win));
+		assertEquals("You found the treasure!", a.move("north"));
 
 	}
 

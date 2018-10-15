@@ -16,9 +16,9 @@ public class Runner {
 		gameManager.intro(a, sc);
 
 		while (gameManager.checkPOS(a, Win) == false) {
+			shrek.moveShrek(a);
 			command = sc.nextLine();
 			System.out.println(gameManager.move(command));
-			shrek.moveShrek(a);
 			if (gameManager.checkPOS(a, Win)) {
 				System.out.println("Your found the treasure!");
 				System.exit(1);

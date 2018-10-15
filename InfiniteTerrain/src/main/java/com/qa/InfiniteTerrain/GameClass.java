@@ -26,7 +26,7 @@ public class GameClass {
 				"Welcome to my Swamp \n" + "You are up to your knees in swamp water and fog is all around you \n"
 						+ "input your name to continue");
 		gamePlayer.name = sc.nextLine();
-		System.out.println("Welcome " + gamePlayer.name + "\n Try North, East, South or West");
+		System.out.println("Welcome " + gamePlayer.name + "\nTry North, East, South or West");
 
 	}
 

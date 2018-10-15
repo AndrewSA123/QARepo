@@ -2,6 +2,7 @@ package com.qa.Library;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Library {
 
@@ -95,6 +96,77 @@ public class Library {
 		}
 
 		return "Item not found";
+	}
+
+	public String updateItemPrice(String a, int b) {
+
+		if (privateItemList.size() > 0) {
+			for (int i = 0; i < privateItemList.size(); i++) {
+				if (privateItemList.get(i).author == a) {
+					privateItemList.get(i).price = b;
+					return "Item updated";
+				}
+			}
+		} else {
+			return "Item not found";
+		}
+		return "Error";
+	}
+
+	public String updateItemPrice(int a, int b) {
+
+		if (privateItemList.size() > 0) {
+			for (int i = 0; i < privateItemList.size(); i++) {
+				if (privateItemList.get(i).UID == a) {
+					privateItemList.get(i).price = b;
+					return "Item updated";
+				}
+			}
+		} else {
+			return "Item not found";
+		}
+		return "Error";
+	}
+
+	public String removePerson(String a) {
+		if (privatePeopleList.size() > 0) {
+			List<People> tempList = privatePeopleList.stream().filter(p -> p.name.equals(a))
+					.collect(Collectors.toList());
+			privatePeopleList.removeAll(tempList);
+		}
+
+		return "Person not found";
+	}
+
+	public String removePerson(int a) {
+
+		if (privatePeopleList.size() > 0) {
+			List<People> tempList = privatePeopleList.stream().filter(p -> p.UID == a).collect(Collectors.toList());
+			privatePeopleList.removeAll(tempList);
+
+		}
+
+		return "Person not found";
+	}
+
+	public String printPeople() {
+
+		if (privatePeopleList.size() > 0) {
+			privatePeopleList.stream().forEach(System.out::println);
+			return "Printing People";
+		}
+
+		return "Printing Error";
+	}
+
+	public String printItems() {
+
+		if (privateItemList.size() > 0) {
+			privateItemList.stream().forEach(System.out::println);
+			return "Printing Items";
+		}
+
+		return "Printing Error";
 	}
 
 

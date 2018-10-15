@@ -9,6 +9,7 @@ public class Hospital {
 	private List<Doctor> doctorList = new ArrayList<Doctor>();
 	private List<Patient> patientList = new ArrayList<Patient>();
 	private List<Nurse> nurseList = new ArrayList<Nurse>();
+	private List<Records> recordList = new ArrayList<Records>();
 
 	public Hospital() {
 
@@ -96,6 +97,37 @@ public class Hospital {
 		}
 		System.out.println("An error occurred");
 		return null;
+	}
+
+	public List<Patient> getPatient(int a) {
+		if (nurseList.size() > 0) {
+			List<Patient> tempList = patientList.stream().filter(p -> p.UID == a).collect(Collectors.toList());
+			return tempList;
+		}
+		System.out.println("An error occurred");
+		return null;
+	}
+
+	public List<Patient> getPatient(String a) {
+		if (nurseList.size() > 0) {
+			List<Patient> tempList = patientList.stream().filter(p -> p.Name.equals(a)).collect(Collectors.toList());
+			return tempList;
+		}
+		System.out.println("An error occurred");
+		return null;
+	}
+
+	public String checkIn(Records a) {
+		a.UID = recordList.size();
+		recordList.add(a);
+		return "Patient checked in";
+	}
+
+	public String checkOut(String name) {
+		List<Records> tempList = recordList.stream().filter(p -> p.patientName.Name.equals(name))
+				.collect(Collectors.toList());
+		recordList.removeAll(tempList);
+		return "Patient checked out";
 	}
 
 }

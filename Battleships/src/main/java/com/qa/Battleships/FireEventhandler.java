@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 
 public class FireEventhandler implements ActionListener {
 
+	GameManager gm = new GameManager();
+
 	public void actionPerformed(ActionEvent e) {
 
 

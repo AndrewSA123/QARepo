@@ -1,5 +1,6 @@
 package com.qa.Battleships;
 
+import java.awt.Component;
 import java.awt.GridLayout;
 
 import javax.swing.JButton;
@@ -41,6 +42,16 @@ public class PlayBoard {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.pack();
 		frame.setVisible(true);
+	}
+
+	public String disableButton() {
+		Component[] comp = frame.getContentPane().getComponents();
+		
+		for (Component c : comp) {
+			System.out.println(c);
+		}
+		
+		return "button disabled";
 	}
 
 }

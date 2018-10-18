@@ -28,6 +28,8 @@ public class Trap {
 		if (trapCheck(a, this.xPOS, this.yPOS)) {
 			a.health -= 50;
 			a.moveSpeed /= 2;
+			System.out.println("health: " + a.health);
+			return "You have been trapped!";
 		}
 
 		return "";

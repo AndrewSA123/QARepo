@@ -18,6 +18,7 @@ public class Runner {
 
 		while (gameManager.checkPOS(a, Win) == false) {
 			shrek.moveShrek(a);
+			System.out.println(trap.update(a, gameManager));
 			command = sc.nextLine();
 			System.out.println(gameManager.move(command));
 			if (gameManager.checkPOS(a, Win)) {

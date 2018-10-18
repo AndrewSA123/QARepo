@@ -13,4 +13,10 @@ public class Patient extends Person {
 		this.wardNum = ward;
 	}
 
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return Name + " " + DoB + " " + wardNum;
+	}
+
 }

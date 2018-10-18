@@ -12,4 +12,13 @@ public class Trap {
 		this.yPOS = y;
 	}
 
+	public boolean trapCheck(Player a, int x, int y) {
+		if (((a.xPOS >= x - 10 && a.xPOS <= x + 10) && (a.yPOS >= y - 10 && a.yPOS <= y + 10))) {
+			return false;
+		} else {
+			return true;
+		}
+
+	}
+
 }

@@ -10,6 +10,8 @@ public class GameClass {
 	int westDist;
 	Player gamePlayer;
 	Treasure winCondition;
+	int difficulty;
+	Scanner sc = new Scanner(System.in);
 
 	public GameClass(int ND, int SD, int ED, int WD, Player player, Treasure Win) {
 		this.eastDist = ED;
@@ -18,7 +20,6 @@ public class GameClass {
 		this.westDist = WD;
 		this.gamePlayer = player;
 		this.winCondition = Win;
-
 	}
 
 	public void intro(Player gamePlayer, Scanner sc) {
@@ -27,7 +28,28 @@ public class GameClass {
 						+ "input your name to continue");
 		gamePlayer.name = sc.nextLine();
 		System.out.println("Welcome " + gamePlayer.name + "\nTry North, East, South or West");
+		System.out.println("Enter your difficulty (Easy, Medium, Hard");
+		this.difficulty = setDifficulty();
 
+	}
+
+	public int setDifficulty() {
+
+
+
+		switch (sc.nextLine()) {
+		case "easy":
+		case "Easy":
+			return 1;
+		case "medium":
+		case "Medium":
+			return 2;
+		case "hard":
+		case "Hard":
+			return 3;
+		}
+
+		return 1;
 	}
 
 	public String move(String dir) {

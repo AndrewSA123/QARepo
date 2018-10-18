@@ -13,4 +13,10 @@ public class Records {
 		this.injury = injury;
 	}
 
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "Patient: " + patientName + ". Injury: " + injury + ". Doctor: " + doctorName;
+	}
+
 }

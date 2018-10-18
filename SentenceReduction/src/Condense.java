@@ -12,7 +12,7 @@ public class Condense {
 //			return (s1 + s2.substring(Math.min(s2.length(), 2)));
 //		}
 //		return " a";
-//	}
+	}
 
 	public static void compare() {
 		String string2 = "adhu";

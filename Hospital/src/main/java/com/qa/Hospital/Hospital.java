@@ -1,5 +1,10 @@
 package com.qa.Hospital;
 
+import java.io.File;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -128,6 +133,39 @@ public class Hospital {
 				.collect(Collectors.toList());
 		recordList.removeAll(tempList);
 		return "Patient checked out";
+	}
+
+	public String saveToFile(Teams a) {
+
+		Path file = Paths.get("Records.txt");
+		File filePath = new File(file.toString());
+		List<String> FileList = new ArrayList<String>();
+
+
+		for (int i = 0; i < doctorList.size(); i++) {
+			FileList.add(doctorList.get(i).toString());
+		}
+
+		for (int i = 0; i < nurseList.size(); i++) {
+			FileList.add(nurseList.get(i).toString());
+		}
+
+		for (int i = 0; i < patientList.size(); i++) {
+			FileList.add(patientList.get(i).toString());
+		}
+		for (int i = 0; i < recordList.size(); i++) {
+			FileList.add(recordList.get(i).toString());
+		}
+
+		FileList.add(a.toString());
+		try {
+			Files.write(file, FileList, Charset.forName("UTF-8"));
+			System.out.println(filePath.getAbsolutePath());
+		} catch (Exception x) {
+			System.out.println(x);
+		}
+
+		return "saved too: " + file.toString();
 	}
 
 }

@@ -1,0 +1,4 @@
+Joe 999999 10
+Amir 888888 9
+Patient: Andrew 30/05/96 5. Injury: broken Knee. Doctor: Joe 999999 10
+The Super class containing the different teams:Surgery

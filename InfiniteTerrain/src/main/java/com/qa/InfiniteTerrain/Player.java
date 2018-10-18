@@ -7,6 +7,8 @@ public class Player {
 
 	int yPOS;
 	int xPOS;
+	String weapon = "None";
+	int moveSpeed = 10;
 
 	public Player(String name, int health) {
 		this.name = name;

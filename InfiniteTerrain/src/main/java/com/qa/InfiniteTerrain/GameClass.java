@@ -1,5 +1,6 @@
 package com.qa.InfiniteTerrain;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class GameClass {
@@ -8,6 +9,7 @@ public class GameClass {
 	int southDist;
 	int eastDist;
 	int westDist;
+	Random rand = new Random();
 	Player gamePlayer;
 	Treasure winCondition;
 	int difficulty;
@@ -22,7 +24,7 @@ public class GameClass {
 		this.winCondition = Win;
 	}
 
-	public void intro(Player gamePlayer, Scanner sc) {
+	public void intro(Player gamePlayer, Scanner sc, Trap a, GameClass b) {
 		System.out.println(
 				"Welcome to my Swamp \n" + "You are up to your knees in swamp water and fog is all around you \n"
 						+ "input your name to continue");
@@ -30,6 +32,8 @@ public class GameClass {
 		System.out.println("Welcome " + gamePlayer.name + "\nTry North, East, South or West");
 		System.out.println("Enter your difficulty (Easy, Medium, Hard");
 		this.difficulty = setDifficulty();
+		System.out.println("You see a shadowy figure 30 meters to the north!");
+		a.placeTraps(b);
 
 	}
 
@@ -59,10 +63,10 @@ public class GameClass {
 			case "North":
 			case "north":
 				if (gamePlayer.yPOS < this.northDist) {
-					this.northDist -= 10;
-					this.southDist += 10;
-					this.gamePlayer.yPOS += 10;
-					return "You moved 10 meters north";
+					this.northDist -= gamePlayer.moveSpeed;
+					this.southDist += gamePlayer.moveSpeed;
+					this.gamePlayer.yPOS += gamePlayer.moveSpeed;
+					return "You moved " + gamePlayer.moveSpeed + " meters north";
 				} else {
 					return "There is a fog wall ahead too dangerous to enter";
 				}
@@ -70,10 +74,10 @@ public class GameClass {
 			case "South":
 			case "south":
 				if (gamePlayer.yPOS > this.southDist) {
-					this.southDist -= 10;
-					this.northDist += 10;
-					this.gamePlayer.yPOS -= 10;
-					return "You moved 10 meters south";
+					this.southDist += gamePlayer.moveSpeed;
+					this.northDist -= gamePlayer.moveSpeed;
+					this.gamePlayer.yPOS -= gamePlayer.moveSpeed;
+					return "You moved " + gamePlayer.moveSpeed + " meters south";
 				} else {
 					return "There is a fog wall ahead too dangerous to enter";
 				}
@@ -81,21 +85,23 @@ public class GameClass {
 			case "West":
 			case "west":
 				if (gamePlayer.xPOS > this.westDist) {
-					this.westDist -= 10;
-					this.eastDist += 10;
-					this.gamePlayer.xPOS -= 10;
-					return "You moved 10 meters west";
+					this.westDist += gamePlayer.moveSpeed;
+					this.eastDist -= gamePlayer.moveSpeed;
+					this.gamePlayer.xPOS -= gamePlayer.moveSpeed;
+					return "You moved " + gamePlayer.moveSpeed + " meters west";
+
 				} else {
 					return "There is a fog wall ahead too dangerous to enter";
+
 				}
 
 			case "East":
 			case "east":
 				if (gamePlayer.xPOS < this.eastDist) {
-					this.eastDist -= 10;
-					this.westDist += 10;
-					this.gamePlayer.xPOS += 10;
-					return "You moved 10 meters east";
+					this.eastDist -= gamePlayer.moveSpeed;
+					this.westDist += gamePlayer.moveSpeed;
+					this.gamePlayer.xPOS += gamePlayer.moveSpeed;
+					return "You moved " + gamePlayer.moveSpeed + " meters east";
 				} else {
 					return "There is a fog wall ahead too dangerous to enter";
 				}
@@ -119,4 +125,5 @@ public class GameClass {
 		}
 
 	}
+
 }

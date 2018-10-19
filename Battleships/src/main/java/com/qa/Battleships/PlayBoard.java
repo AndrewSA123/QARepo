@@ -31,16 +31,16 @@ public class PlayBoard {
 	public void play() {
 
 		frame.setLayout(new GridLayout(this.width, this.length));
-		JButton[][] grid = new JButton[width][length];
+		JButton[][] button = new JButton[width][length];
 
 		for (int x = 0; x < width; x++) {
 			for (int y = 0; y < length; y++) {
-				grid[x][y] = new JButton();
-				grid[x][y].addActionListener(fireEvent);
-				grid[x][y].setName(letters[x] + numbers[y]);
-				grid[x][y].setText(letters[x] + numbers[y]);
+				button[x][y] = new JButton();
+				button[x][y].addActionListener(fireEvent);
+				button[x][y].setName(letters[x] + numbers[y]);
+				button[x][y].setText(letters[x] + numbers[y]);
 
-				frame.add(grid[x][y]);
+				frame.add(button[x][y]);
 
 			}
 

@@ -5,12 +5,11 @@ import java.awt.event.ActionListener;
 
 public class FireEventhandler implements ActionListener {
 
-	GameManager gm = new GameManager();
 
 	public void actionPerformed(ActionEvent e) {
-
-
+		PlayBoard pb = new PlayBoard();
 		System.out.println(e.getActionCommand());
+		pb.disableButton(e);
 
 	}
 

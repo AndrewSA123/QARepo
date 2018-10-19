@@ -2,6 +2,7 @@ package com.qa.Battleships;
 
 import java.awt.Component;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -18,6 +19,10 @@ public class PlayBoard {
 
 	FireEventhandler fireEvent = new FireEventhandler();
 
+	public PlayBoard() {
+
+	}
+
 	public PlayBoard(int width, int length) {
 		this.width = width;
 		this.length = length;
@@ -32,6 +37,7 @@ public class PlayBoard {
 			for (int y = 0; y < length; y++) {
 				grid[x][y] = new JButton();
 				grid[x][y].addActionListener(fireEvent);
+				grid[x][y].setName(letters[x] + numbers[y]);
 				grid[x][y].setText(letters[x] + numbers[y]);
 
 				frame.add(grid[x][y]);
@@ -44,11 +50,17 @@ public class PlayBoard {
 		frame.setVisible(true);
 	}
 
-	public String disableButton() {
-		Component[] comp = frame.getContentPane().getComponents();
-		
+	public String disableButton(ActionEvent a) {
+		Component[] comp = this.frame.getComponents();
+
+
 		for (Component c : comp) {
-			System.out.println(c);
+			System.out.println(c.getName());
+			System.out.println(a.getActionCommand().toString());
+			if (c.getName().equals(a.getActionCommand().toString())) {
+				System.out.println("Working");
+				c.setEnabled(false);
+			}
 		}
 		
 		return "button disabled";

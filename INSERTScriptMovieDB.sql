@@ -15,5 +15,10 @@ INSERT INTO movie (title) VALUES("The Flash");
 INSERT INTO movie (title) VALUES("Doctor Strange");
 INSERT INTO movie (title) VALUES("DC's Legends of Tommorrow");
 
-INSERT INTO genre (genreName) VALUES("Action");
+INSERT INTO genre (genreName) VALUES("");
+
+
+
+
+
 
